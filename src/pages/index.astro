@@ -1,0 +1,136 @@
+---
+import "../styles/global.css";
+---
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" href="/favicon.ico" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <meta
+      name="description"
+      content="Private Muay Thai personal training, fighter development, and coaching with Cheng."
+    />
+    <title>Cheng.EXE | Muay Thai Personal Training</title>
+  </head>
+  <body class="min-h-screen bg-rice text-ink antialiased">
+    <main>
+      <section class="relative min-h-screen overflow-hidden bg-charcoal text-white">
+        <div class="absolute inset-0 bg-[linear-gradient(115deg,rgba(21,21,20,0.96),rgba(21,21,20,0.76)_48%,rgba(185,31,44,0.34))]"></div>
+        <div class="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(0deg,rgba(247,242,232,1),rgba(247,242,232,0))]"></div>
+        <div class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 sm:px-8 lg:px-10">
+          <header class="flex items-center justify-between">
+            <a href="/" class="text-lg font-black uppercase tracking-[0.16em] text-white">Cheng.EXE</a>
+            <nav class="hidden items-center gap-8 text-sm font-semibold text-white/76 sm:flex">
+              <a class="transition hover:text-white" href="#profile">Profile</a>
+              <a class="transition hover:text-white" href="#training">Training</a>
+              <a class="transition hover:text-white" href="#contact">Contact</a>
+            </nav>
+          </header>
+
+          <div class="grid flex-1 items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
+            <div class="max-w-3xl">
+              <p class="mb-5 inline-flex border-l-4 border-gold pl-4 text-sm font-bold uppercase tracking-[0.22em] text-gold">
+                Private Muay Thai Coaching
+              </p>
+              <h1 class="text-5xl font-black leading-[0.95] sm:text-6xl lg:text-7xl">
+                Train sharper. Hit cleaner. Move with purpose.
+              </h1>
+              <p class="mt-7 max-w-2xl text-lg leading-8 text-white/78">
+                One-on-one Muay Thai personal training with Cheng for beginners,
+                aspiring fighters, and anyone who wants focused technical coaching
+                without a crowded class format.
+              </p>
+              <div class="mt-9 flex flex-col gap-3 sm:flex-row">
+                <a
+                  href="#contact"
+                  class="inline-flex h-12 items-center justify-center bg-redline px-6 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-redline"
+                >
+                  Start Training
+                </a>
+                <a
+                  href="#profile"
+                  class="inline-flex h-12 items-center justify-center border border-white/34 px-6 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white hover:text-ink"
+                >
+                  View Resume
+                </a>
+              </div>
+            </div>
+
+            <div class="relative min-h-[420px] border border-white/16 bg-white/8 p-5 shadow-2xl backdrop-blur">
+              <div class="absolute -right-6 -top-6 h-24 w-24 border-r-4 border-t-4 border-gold"></div>
+              <div class="absolute -bottom-6 -left-6 h-24 w-24 border-b-4 border-l-4 border-redline"></div>
+              <div class="grid h-full place-items-center border border-white/18 bg-[radial-gradient(circle_at_center,rgba(215,169,79,0.20),rgba(255,255,255,0.04)_42%,rgba(0,0,0,0.16))] px-8 py-14 text-center">
+                <div>
+                  <p class="text-sm font-black uppercase tracking-[0.24em] text-gold">Cheng</p>
+                  <p class="mt-4 text-6xl font-black uppercase leading-none sm:text-7xl">Muay Thai</p>
+                  <p class="mx-auto mt-6 max-w-sm text-base leading-7 text-white/72">
+                    Placeholder visual area for your trainer photo, fight image, or gym training shot.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="profile" class="bg-rice px-6 py-20 sm:px-8 lg:px-10">
+        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[0.22em] text-redline">Trainer Profile</p>
+            <h2 class="mt-4 text-4xl font-black leading-tight text-ink sm:text-5xl">Built for private, focused work.</h2>
+          </div>
+          <div class="grid gap-5 sm:grid-cols-3">
+            <div class="border-t-4 border-redline bg-canvas p-6">
+              <p class="text-3xl font-black">01</p>
+              <p class="mt-3 font-bold">Technical pad work</p>
+              <p class="mt-2 text-sm leading-6 text-ink/70">Clean fundamentals, timing, balance, and fight-ready combinations.</p>
+            </div>
+            <div class="border-t-4 border-gold bg-canvas p-6">
+              <p class="text-3xl font-black">02</p>
+              <p class="mt-3 font-bold">Conditioning</p>
+              <p class="mt-2 text-sm leading-6 text-ink/70">Sessions shaped around stamina, power, mobility, and repeatable progress.</p>
+            </div>
+            <div class="border-t-4 border-charcoal bg-canvas p-6">
+              <p class="text-3xl font-black">03</p>
+              <p class="mt-3 font-bold">Personal coaching</p>
+              <p class="mt-2 text-sm leading-6 text-ink/70">A private format for faster feedback and training that fits your level.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="training" class="bg-white px-6 py-20 sm:px-8 lg:px-10">
+        <div class="mx-auto max-w-7xl">
+          <p class="text-sm font-black uppercase tracking-[0.22em] text-redline">Training Focus</p>
+          <div class="mt-6 grid gap-8 lg:grid-cols-2">
+            <h2 class="text-4xl font-black leading-tight text-ink sm:text-5xl">Private sessions for skill, fitness, and confidence.</h2>
+            <p class="text-lg leading-8 text-ink/70">
+              This first version is a simple home page foundation. We can replace
+              these placeholders with your fight resume, certifications, client type,
+              location, rates, contact method, and real photos as soon as you give me
+              the details.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="bg-charcoal px-6 py-16 text-white sm:px-8 lg:px-10">
+        <div class="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <p class="text-sm font-black uppercase tracking-[0.22em] text-gold">Ready to train?</p>
+            <h2 class="mt-3 text-3xl font-black">Tell people how to reach you here.</h2>
+          </div>
+          <a
+            href="mailto:hello@example.com"
+            class="inline-flex h-12 items-center justify-center bg-gold px-6 text-sm font-black uppercase tracking-[0.16em] text-charcoal transition hover:bg-white"
+          >
+            Contact Cheng
+          </a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

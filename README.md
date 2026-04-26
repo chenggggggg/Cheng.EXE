@@ -1,13 +1,17 @@
 # Cheng.EXE
 
-Cheng.EXE is a new project repository prepared for development.
+Muay Thai personal training website for Cheng.
 
-## Getting Started
+## Stack
 
-This repository is intentionally lightweight for now. Add the project stack, source
-files, and setup commands here as the direction becomes clear.
+- Astro
+- Tailwind CSS
+- TypeScript
 
-## Repository
+## Commands
 
-Suggested GitHub repository name: `Cheng.EXE`
-
+```sh
+npm run dev
+npm run build
+npm run preview
+```
