@@ -1,5 +1,58 @@
 ---
 import "../styles/global.css";
+
+const galleryItems = [
+  {
+    src: "/media/gallery/20260212-187-1.JPG",
+    alt: "Muay Thai group fundamentals class",
+    tile: "gallery-tile-wide",
+  },
+  {
+    src: "/media/gallery/1777233657057.jpg",
+    alt: "Muay Thai kick training",
+    tile: "gallery-tile-tall",
+  },
+  {
+    src: "/media/gallery/1777233657018.jpg",
+    alt: "Muay Thai boxing stance training",
+    tile: "gallery-tile-tall",
+  },
+  {
+    src: "/media/gallery/action.jpg",
+    alt: "Muay Thai fight action",
+    tile: "gallery-tile-wide",
+  },
+  {
+    src: "/media/gallery/me.jpg",
+    alt: "Muay Thai fighter portrait in the ring",
+    tile: "gallery-tile-tall",
+  },
+  {
+    src: "/media/gallery/BHO_0119.jpg",
+    alt: "Muay Thai instructor group moment",
+    tile: "gallery-tile-wide",
+  },
+  {
+    src: "/media/gallery/IMG_5717.JPG",
+    alt: "Muay Thai instructor certificate ceremony",
+    tile: "gallery-tile-wide",
+  },
+  {
+    src: "/media/gallery/20260212-187.jpg",
+    alt: "Wide Muay Thai group training class",
+    tile: "gallery-tile-wide",
+  },
+  {
+    src: "/media/gallery/MuayThai-STA-foto.jpg",
+    alt: "Muay Thai instructor portrait",
+    tile: "gallery-tile-tall",
+  },
+  {
+    src: "/media/gallery/weigh-in.jpg",
+    alt: "Muay Thai weigh-in faceoff",
+    tile: "gallery-tile-tall",
+  },
+];
 ---
 
 <html lang="en">
@@ -15,122 +68,409 @@ import "../styles/global.css";
     />
     <title>Cheng.EXE | Muay Thai Personal Training</title>
   </head>
-  <body class="min-h-screen bg-rice text-ink antialiased">
+  <body class="min-h-screen bg-black text-white antialiased">
     <main>
-      <section class="relative min-h-screen overflow-hidden bg-charcoal text-white">
-        <div class="absolute inset-0 bg-[linear-gradient(115deg,rgba(21,21,20,0.96),rgba(21,21,20,0.76)_48%,rgba(185,31,44,0.34))]"></div>
-        <div class="absolute inset-x-0 bottom-0 h-40 bg-[linear-gradient(0deg,rgba(247,242,232,1),rgba(247,242,232,0))]"></div>
-        <div class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-6 py-6 sm:px-8 lg:px-10">
-          <header class="flex items-center justify-between">
-            <a href="/" class="text-lg font-black uppercase tracking-[0.16em] text-white">Cheng.EXE</a>
-            <nav class="hidden items-center gap-8 text-sm font-semibold text-white/76 sm:flex">
-              <a class="transition hover:text-white" href="#profile">Profile</a>
-              <a class="transition hover:text-white" href="#training">Training</a>
-              <a class="transition hover:text-white" href="#contact">Contact</a>
-            </nav>
+      <div data-horizontal-scroll class="horizontal-scroll">
+        <div class="sticky top-0 h-screen overflow-hidden">
+          <div data-horizontal-track class="horizontal-track flex h-screen">
+      <section data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/25 bg-black text-white">
+        <div class="absolute inset-0 bg-black"></div>
+        <div data-hero-reveal class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-8 sm:py-6 lg:px-10">
+          <header class="flex items-center justify-center sm:justify-start">
+            <a href="/" class="font-athletic text-lg uppercase text-white sm:text-xl">Cheng.EXE</a>
           </header>
 
-          <div class="grid flex-1 items-center gap-12 py-16 lg:grid-cols-[1.05fr_0.95fr] lg:py-20">
-            <div class="max-w-3xl">
-              <p class="mb-5 inline-flex border-l-4 border-gold pl-4 text-sm font-bold uppercase tracking-[0.22em] text-gold">
-                Private Muay Thai Coaching
-              </p>
-              <h1 class="text-5xl font-black leading-[0.95] sm:text-6xl lg:text-7xl">
-                Train sharper. Hit cleaner. Move with purpose.
-              </h1>
-              <p class="mt-7 max-w-2xl text-lg leading-8 text-white/78">
-                One-on-one Muay Thai personal training with Cheng for beginners,
-                aspiring fighters, and anyone who wants focused technical coaching
-                without a crowded class format.
-              </p>
-              <div class="mt-9 flex flex-col gap-3 sm:flex-row">
-                <a
-                  href="#contact"
-                  class="inline-flex h-12 items-center justify-center bg-redline px-6 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:bg-white hover:text-redline"
-                >
-                  Start Training
-                </a>
-                <a
-                  href="#profile"
-                  class="inline-flex h-12 items-center justify-center border border-white/34 px-6 text-sm font-black uppercase tracking-[0.16em] text-white transition hover:border-white hover:bg-white hover:text-ink"
-                >
-                  View Resume
-                </a>
-              </div>
-            </div>
+          <div class="flex flex-1 items-center justify-center py-10 text-center sm:py-14 md:py-16 lg:py-20">
+            <h1
+              class="mx-auto max-w-[18rem] font-athletic text-[1.5rem] font-normal italic leading-[1.18] text-white max-[380px]:text-[1.25rem] sm:max-w-[24rem] sm:text-[1.625rem] md:max-w-[30rem] md:text-[1.75rem] lg:max-w-[36rem] lg:text-[1.875rem] xl:max-w-[42rem] xl:text-[2rem] 2xl:max-w-[48rem] 2xl:text-[2.25rem]"
+            >
+              <span class="hero-line">Train with purpose.</span>
+              <span class="hero-line">Build fundamentals.</span>
+              <span class="hero-line">Sharpen skills.</span>
+              <span class="hero-line">Feel stronger.</span>
+            </h1>
+          </div>
 
-            <div class="relative min-h-[420px] border border-white/16 bg-white/8 p-5 shadow-2xl backdrop-blur">
-              <div class="absolute -right-6 -top-6 h-24 w-24 border-r-4 border-t-4 border-gold"></div>
-              <div class="absolute -bottom-6 -left-6 h-24 w-24 border-b-4 border-l-4 border-redline"></div>
-              <div class="grid h-full place-items-center border border-white/18 bg-[radial-gradient(circle_at_center,rgba(215,169,79,0.20),rgba(255,255,255,0.04)_42%,rgba(0,0,0,0.16))] px-8 py-14 text-center">
-                <div>
-                  <p class="text-sm font-black uppercase tracking-[0.24em] text-gold">Cheng</p>
-                  <p class="mt-4 text-6xl font-black uppercase leading-none sm:text-7xl">Muay Thai</p>
-                  <p class="mx-auto mt-6 max-w-sm text-base leading-7 text-white/72">
-                    Placeholder visual area for your trainer photo, fight image, or gym training shot.
-                  </p>
-                </div>
-              </div>
-            </div>
+          <div class="flex justify-center pb-8 sm:pb-10">
+            <a
+              href="#fundamentals"
+              data-go-panel="1"
+              class="hero-cta inline-flex h-11 min-w-28 items-center justify-center border border-white/70 px-7 font-athletic text-sm uppercase text-white transition hover:border-white hover:bg-white hover:text-black sm:h-12 sm:min-w-32 sm:text-base"
+            >
+              Start
+            </a>
           </div>
         </div>
       </section>
 
-      <section id="profile" class="bg-rice px-6 py-20 sm:px-8 lg:px-10">
-        <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[0.8fr_1.2fr]">
-          <div>
-            <p class="text-sm font-black uppercase tracking-[0.22em] text-redline">Trainer Profile</p>
-            <h2 class="mt-4 text-4xl font-black leading-tight text-ink sm:text-5xl">Built for private, focused work.</h2>
-          </div>
-          <div class="grid gap-5 sm:grid-cols-3">
-            <div class="border-t-4 border-redline bg-canvas p-6">
-              <p class="text-3xl font-black">01</p>
-              <p class="mt-3 font-bold">Technical pad work</p>
-              <p class="mt-2 text-sm leading-6 text-ink/70">Clean fundamentals, timing, balance, and fight-ready combinations.</p>
-            </div>
-            <div class="border-t-4 border-gold bg-canvas p-6">
-              <p class="text-3xl font-black">02</p>
-              <p class="mt-3 font-bold">Conditioning</p>
-              <p class="mt-2 text-sm leading-6 text-ink/70">Sessions shaped around stamina, power, mobility, and repeatable progress.</p>
-            </div>
-            <div class="border-t-4 border-charcoal bg-canvas p-6">
-              <p class="text-3xl font-black">03</p>
-              <p class="mt-3 font-bold">Personal coaching</p>
-              <p class="mt-2 text-sm leading-6 text-ink/70">A private format for faster feedback and training that fits your level.</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section id="training" class="bg-white px-6 py-20 sm:px-8 lg:px-10">
-        <div class="mx-auto max-w-7xl">
-          <p class="text-sm font-black uppercase tracking-[0.22em] text-redline">Training Focus</p>
-          <div class="mt-6 grid gap-8 lg:grid-cols-2">
-            <h2 class="text-4xl font-black leading-tight text-ink sm:text-5xl">Private sessions for skill, fitness, and confidence.</h2>
-            <p class="text-lg leading-8 text-ink/70">
-              This first version is a simple home page foundation. We can replace
-              these placeholders with your fight resume, certifications, client type,
-              location, rates, contact method, and real photos as soon as you give me
-              the details.
+      <section id="fundamentals" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/25 bg-black">
+        <figure class="absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
+          <img
+            src="/media/fundamentals-training.jpg"
+            alt="Muay Thai fundamentals group training"
+            class="h-full w-full object-cover object-center opacity-85"
+          />
+        </figure>
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative min-h-screen">
+          <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
+            <div class="w-full max-w-xl">
+            <p class="chapter-line font-athletic text-sm uppercase text-white/40">01</p>
+            <h2 class="chapter-line mt-4 font-athletic text-3xl font-normal italic text-white sm:text-4xl">Fundamentals</h2>
+            <p class="chapter-line mt-6 max-w-xl text-base leading-8 text-white/62 sm:text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer
+              posuere, mi vitae facilisis luctus, nibh sem cursus lectus, vitae
+              tempor lacus lorem sed justo.
             </p>
+            </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" class="bg-charcoal px-6 py-16 text-white sm:px-8 lg:px-10">
-        <div class="mx-auto flex max-w-7xl flex-col gap-8 sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p class="text-sm font-black uppercase tracking-[0.22em] text-gold">Ready to train?</p>
-            <h2 class="mt-3 text-3xl font-black">Tell people how to reach you here.</h2>
+      <section id="sharpen-skills" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/25 bg-black">
+        <figure class="absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
+          <img
+            src="/media/fight-action.jpg"
+            alt="Muay Thai fight action"
+            class="h-full w-full object-cover object-center opacity-85"
+          />
+        </figure>
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative min-h-screen">
+          <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
+            <div class="w-full max-w-xl">
+            <p class="chapter-line font-athletic text-sm uppercase text-white/40">02</p>
+            <h2 class="chapter-line mt-4 font-athletic text-3xl font-normal italic text-white sm:text-4xl">Sharpen Skills</h2>
+            <p class="chapter-line mt-6 max-w-xl text-base leading-8 text-white/62 sm:text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent
+              feugiat, arcu non dictum placerat, erat justo gravida risus, at
+              dignissim magna nibh non mi.
+            </p>
+            </div>
           </div>
-          <a
-            href="mailto:hello@example.com"
-            class="inline-flex h-12 items-center justify-center bg-gold px-6 text-sm font-black uppercase tracking-[0.16em] text-charcoal transition hover:bg-white"
-          >
-            Contact Cheng
-          </a>
         </div>
       </section>
+
+      <section id="feel-stronger" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/25 bg-black">
+        <figure class="absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
+          <img
+            src="/media/kick-training.jpg"
+            alt="Muay Thai kick training"
+            class="h-full w-full object-cover object-center opacity-85"
+          />
+        </figure>
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative min-h-screen">
+          <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
+            <div class="w-full max-w-xl">
+            <p class="chapter-line font-athletic text-sm uppercase text-white/40">03</p>
+            <h2 class="chapter-line mt-4 font-athletic text-3xl font-normal italic text-white sm:text-4xl">Feel Stronger</h2>
+            <p class="chapter-line mt-6 max-w-xl text-base leading-8 text-white/62 sm:text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+              vulputate massa a libero suscipit, in consequat nunc luctus. Donec
+              vitae sem at nisl posuere porttitor.
+            </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="experience" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/25 bg-black">
+        <figure class="absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
+          <img
+            src="/media/portrait-ring.jpg"
+            alt="Cheng in the ring"
+            class="h-full w-full object-cover object-center opacity-85"
+          />
+        </figure>
+        <div class="absolute inset-0 bg-black/15"></div>
+        <div class="relative min-h-screen">
+          <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
+            <div class="w-full max-w-xl">
+            <p class="chapter-line font-athletic text-sm uppercase text-white/40">04</p>
+            <h2 class="chapter-line mt-4 font-athletic text-3xl font-normal italic text-white sm:text-4xl">Experience</h2>
+            <p class="chapter-line mt-6 max-w-xl text-base leading-8 text-white/62 sm:text-lg">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse
+              potenti. Morbi tristique, mauris non ultricies sagittis, massa ante
+              efficitur erat, vitae posuere mi neque id neque.
+            </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="gallery" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/25 bg-black px-4 py-7 sm:px-7 sm:py-9 lg:px-10">
+        <div data-chapter-reveal class="mx-auto grid h-full max-w-7xl grid-rows-[auto_auto_1fr] gap-5">
+          <div class="text-center">
+            <p class="chapter-line font-athletic text-sm uppercase text-white/40">05</p>
+            <h2 class="chapter-line mx-auto mt-4 max-w-3xl font-athletic text-2xl font-normal uppercase leading-snug text-white sm:text-3xl lg:text-4xl">
+              Training Gallery
+            </h2>
+          </div>
+          <div class="chapter-line flex flex-wrap items-center justify-center gap-x-4 gap-y-2 font-athletic text-xs uppercase text-white/38">
+            <span class="text-white">All</span>
+            <span>/</span>
+            <span>Training</span>
+            <span>/</span>
+            <span>Ring</span>
+            <span>/</span>
+            <span>Class</span>
+            <span>/</span>
+            <span>Coach</span>
+          </div>
+          <div class="chapter-line gallery-grid min-h-0">
+            {galleryItems.map((item) => (
+              <button
+                type="button"
+                data-gallery-item
+                data-gallery-src={item.src}
+                data-gallery-alt={item.alt}
+                class={`gallery-thumb ${item.tile}`}
+                aria-label={`Preview ${item.alt}`}
+              >
+                <img
+                  src={item.src}
+                  alt={item.alt}
+                  class="h-full w-full object-cover object-center"
+                />
+              </button>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/25 bg-black px-5 py-8 sm:px-8 sm:py-10 lg:px-10">
+        <div data-chapter-reveal class="mx-auto flex h-full max-w-5xl flex-col justify-center">
+          <p class="chapter-line font-athletic text-sm uppercase text-white/40">06</p>
+          <h2 class="chapter-line mt-4 max-w-4xl font-athletic text-4xl font-normal italic leading-tight text-white sm:text-5xl lg:text-6xl">
+            Start training with Cheng.
+          </h2>
+          <p class="chapter-line mt-7 max-w-2xl text-base leading-8 text-white/62 sm:text-lg">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam
+            viverra neque at ipsum posuere, sed luctus magna feugiat.
+          </p>
+          <div class="chapter-line mt-10 flex flex-col gap-3 sm:flex-row">
+            <a
+              href="https://instagram.com/"
+              class="inline-flex h-12 items-center justify-center gap-3 border border-white px-7 font-athletic text-sm uppercase text-white transition hover:bg-white hover:text-black sm:w-48"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                <rect x="3" y="3" width="18" height="18" rx="5" stroke="currentColor" stroke-width="2" />
+                <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2" />
+                <circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" />
+              </svg>
+              Instagram
+            </a>
+            <a
+              href="https://wa.me/31646281182"
+              class="inline-flex h-12 items-center justify-center gap-3 border border-white/35 px-7 font-athletic text-sm uppercase text-white transition hover:border-white hover:bg-white hover:text-black sm:w-48"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                <path d="M5.2 18.8 6.3 15.1A7.7 7.7 0 1 1 9 17.8L5.2 18.8Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+                <path d="M9.2 8.7c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.7 1.7c.1.2.1.4-.1.6l-.4.5c.6 1 1.4 1.7 2.4 2.3l.5-.5c.2-.2.4-.2.6-.1l1.7.8c.3.1.4.3.4.6v.5c0 .3-.1.5-.4.7-.5.3-1.1.5-1.8.4-2.9-.3-5.8-3-6.2-6 0-.6.1-1.1.4-1.5Z" fill="currentColor" />
+              </svg>
+              WhatsApp
+            </a>
+            <a
+              href="tel:+31646281182"
+              class="inline-flex h-12 items-center justify-center gap-3 border border-white/35 px-7 font-athletic text-sm uppercase text-white transition hover:border-white hover:bg-white hover:text-black sm:w-56"
+            >
+              <svg class="h-5 w-5" viewBox="0 0 24 24" aria-hidden="true" fill="none">
+                <path d="M8.2 5.2 9.6 8.6c.2.5.1 1-.3 1.3l-1.1 1.1c.9 1.9 2.3 3.3 4.2 4.2l1.1-1.1c.4-.4.9-.5 1.3-.3l3.4 1.4c.5.2.8.7.7 1.3l-.4 2.2c-.1.6-.6 1-1.2 1C10.1 19.7 4.3 13.9 4.3 6.7c0-.6.4-1.1 1-1.2l2.2-.4c.6-.1 1.1.2 1.3.7Z" stroke="currentColor" stroke-width="2" stroke-linejoin="round" />
+              </svg>
+              +31 646281182
+            </a>
+          </div>
+        </div>
+      </section>
+          </div>
+        </div>
+      </div>
     </main>
+    <div
+      data-gallery-preview
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/92 px-5 py-6 sm:px-8"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Gallery preview"
+    >
+      <button
+        type="button"
+        data-gallery-close
+        class="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center border border-white/35 font-athletic text-2xl leading-none text-white transition hover:border-white hover:bg-white hover:text-black"
+        aria-label="Close gallery preview"
+      >
+        &times;
+      </button>
+      <img
+        data-gallery-preview-image
+        src=""
+        alt=""
+        class="max-h-[86vh] max-w-[92vw] object-contain"
+      />
+    </div>
+    <script>
+      const heroLines = document.querySelector("[data-hero-reveal]");
+
+      if (heroLines) {
+        const revealHeroLines = () => {
+          heroLines.classList.add("hero-lines-visible");
+          window.removeEventListener("wheel", revealHeroLines);
+          window.removeEventListener("touchmove", revealHeroLines);
+        };
+
+        window.addEventListener("wheel", revealHeroLines, { once: true, passive: true });
+        window.addEventListener("touchmove", revealHeroLines, { once: true, passive: true });
+      }
+
+      const horizontalTrack = document.querySelector("[data-horizontal-track]");
+      const panels = Array.from(document.querySelectorAll("[data-panel]"));
+      const panelLinks = document.querySelectorAll("[data-go-panel]");
+      const galleryItems = document.querySelectorAll("[data-gallery-item]");
+      const galleryPreview = document.querySelector("[data-gallery-preview]");
+      const galleryPreviewImage = document.querySelector("[data-gallery-preview-image]");
+      const galleryClose = document.querySelector("[data-gallery-close]");
+      let activePanelIndex = 0;
+      let isPanelLocked = false;
+      let touchStartY = 0;
+      let isGalleryPreviewOpen = false;
+
+      const closeGalleryPreview = () => {
+        if (!galleryPreview || !galleryPreviewImage) return;
+
+        galleryPreview.classList.add("hidden");
+        galleryPreview.classList.remove("flex");
+        galleryPreviewImage.removeAttribute("src");
+        galleryPreviewImage.alt = "";
+        isGalleryPreviewOpen = false;
+      };
+
+      galleryItems.forEach((item) => {
+        item.addEventListener("click", () => {
+          if (!galleryPreview || !galleryPreviewImage) return;
+
+          galleryPreviewImage.src = item.getAttribute("data-gallery-src") ?? "";
+          galleryPreviewImage.alt = item.getAttribute("data-gallery-alt") ?? "";
+          galleryPreview.classList.remove("hidden");
+          galleryPreview.classList.add("flex");
+          isGalleryPreviewOpen = true;
+        });
+      });
+
+      galleryClose?.addEventListener("click", closeGalleryPreview);
+
+      galleryPreview?.addEventListener("click", (event) => {
+        if (event.target === galleryPreview) closeGalleryPreview();
+      });
+
+      const revealActivePanel = (index) => {
+        panels.forEach((panel, panelIndex) => {
+          const revealBlock = panel.querySelector("[data-chapter-reveal]");
+
+          if (!revealBlock) return;
+
+          revealBlock.classList.toggle("chapter-visible", panelIndex === index);
+        });
+      };
+
+      const goToPanel = (index) => {
+        if (!horizontalTrack || panels.length === 0) return;
+
+        activePanelIndex = Math.min(Math.max(index, 0), panels.length - 1);
+        horizontalTrack.style.transform = `translate3d(${-activePanelIndex * window.innerWidth}px, 0, 0)`;
+        revealActivePanel(activePanelIndex);
+      };
+
+      const queuePanelMove = (direction) => {
+        if (isGalleryPreviewOpen || isPanelLocked || direction === 0) return;
+
+        const nextIndex = activePanelIndex + direction;
+
+        if (nextIndex < 0 || nextIndex >= panels.length) return;
+
+        isPanelLocked = true;
+        goToPanel(nextIndex);
+
+        window.setTimeout(() => {
+          isPanelLocked = false;
+        }, 760);
+      };
+
+      panelLinks.forEach((link) => {
+        link.addEventListener("click", (event) => {
+          const targetIndex = Number(link.getAttribute("data-go-panel"));
+
+          if (Number.isNaN(targetIndex)) return;
+
+          event.preventDefault();
+          goToPanel(targetIndex);
+        });
+      });
+
+      window.addEventListener(
+        "wheel",
+        (event) => {
+          event.preventDefault();
+
+          const dominantDelta = Math.abs(event.deltaY) >= Math.abs(event.deltaX)
+            ? event.deltaY
+            : event.deltaX;
+
+          if (Math.abs(dominantDelta) < 12) return;
+
+          queuePanelMove(Math.sign(dominantDelta));
+        },
+        { passive: false }
+      );
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape" && isGalleryPreviewOpen) {
+          closeGalleryPreview();
+          return;
+        }
+
+        if (isGalleryPreviewOpen) return;
+
+        const nextKeys = ["ArrowDown", "ArrowRight", "PageDown", " "];
+        const previousKeys = ["ArrowUp", "ArrowLeft", "PageUp"];
+
+        if (nextKeys.includes(event.key)) {
+          event.preventDefault();
+          queuePanelMove(1);
+        }
+
+        if (previousKeys.includes(event.key)) {
+          event.preventDefault();
+          queuePanelMove(-1);
+        }
+      });
+
+      window.addEventListener(
+        "touchstart",
+        (event) => {
+          touchStartY = event.touches[0]?.clientY ?? 0;
+        },
+        { passive: true }
+      );
+
+      window.addEventListener(
+        "touchend",
+        (event) => {
+          const touchEndY = event.changedTouches[0]?.clientY ?? touchStartY;
+          const deltaY = touchStartY - touchEndY;
+
+          if (Math.abs(deltaY) < 36) return;
+
+          queuePanelMove(Math.sign(deltaY));
+        },
+        { passive: true }
+      );
+
+      window.addEventListener("resize", () => {
+        goToPanel(activePanelIndex);
+      });
+
+      goToPanel(0);
+    </script>
   </body>
 </html>

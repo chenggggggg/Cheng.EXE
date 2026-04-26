@@ -3,16 +3,213 @@
 @tailwind utilities;
 
 html {
+  height: 100%;
   scroll-behavior: smooth;
 }
 
 body {
+  height: 100%;
   margin: 0;
-  background: #f7f2e8;
-  color: #151514;
+  background: #000;
+  color: #fff;
+  overflow: hidden;
 }
 
 ::selection {
   background: #b91f2c;
   color: white;
+}
+
+.hero-line {
+  animation: hero-line-fade 520ms ease-out both;
+  display: block;
+}
+
+.hero-line:nth-child(2) {
+  animation-delay: 120ms;
+}
+
+.hero-line:nth-child(3) {
+  animation-delay: 240ms;
+}
+
+.hero-line:nth-child(4) {
+  animation-delay: 360ms;
+}
+
+.hero-cta {
+  animation: hero-line-fade 520ms ease-out 480ms both;
+}
+
+.hero-line:nth-child(5) {
+  animation-delay: 480ms;
+}
+
+.hero-lines-visible .hero-line,
+.hero-lines-visible .hero-cta {
+  animation: none;
+  opacity: 1;
+  transform: none;
+}
+
+.chapter-line {
+  display: block;
+  opacity: 0;
+  transition:
+    opacity 420ms ease-out,
+    transform 420ms ease-out;
+  transform: translateX(1rem);
+}
+
+.chapter-visible .chapter-line {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.chapter-visible .chapter-line:nth-child(2) {
+  transition-delay: 120ms;
+}
+
+.chapter-visible .chapter-line:nth-child(3) {
+  transition-delay: 240ms;
+}
+
+.horizontal-track {
+  transition: transform 700ms cubic-bezier(0.76, 0, 0.24, 1);
+  will-change: transform;
+}
+
+.angled-panel {
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 0 100%);
+}
+
+.angled-panel::after {
+  background: rgb(255 255 255 / 0.32);
+  bottom: 0;
+  content: "";
+  pointer-events: none;
+  position: absolute;
+  right: 5.7%;
+  top: 0;
+  transform: skewX(4deg);
+  transform-origin: bottom right;
+  width: 1px;
+}
+
+.angled-panel-right {
+  clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
+}
+
+.angled-panel-right::after {
+  left: 5.7%;
+  right: auto;
+  transform: skewX(-4deg);
+  transform-origin: bottom left;
+}
+
+.no-panel-edge::after {
+  display: none;
+}
+
+.gallery-grid {
+  display: grid;
+  gap: 0.35rem;
+  grid-auto-flow: dense;
+  grid-auto-rows: minmax(4rem, 1fr);
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.gallery-thumb {
+  background: #111;
+  border: 0;
+  cursor: pointer;
+  display: block;
+  min-height: 0;
+  overflow: hidden;
+  position: relative;
+  transition:
+    border-color 180ms ease,
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.gallery-thumb img {
+  opacity: 0.86;
+  transition:
+    opacity 180ms ease,
+    transform 240ms ease;
+}
+
+.gallery-thumb:hover,
+.gallery-thumb:focus-visible {
+  outline: none;
+}
+
+.gallery-thumb:hover img,
+.gallery-thumb:focus-visible img {
+  opacity: 1;
+  transform: scale(1.025);
+}
+
+.gallery-tile-wide {
+  grid-column: span 2;
+  grid-row: span 1;
+}
+
+.gallery-tile-square {
+  grid-column: span 1;
+  grid-row: span 1;
+}
+
+.gallery-tile-tall {
+  grid-column: span 1;
+  grid-row: span 2;
+}
+
+@keyframes hero-line-fade {
+  from {
+    opacity: 0;
+    transform: translateX(1rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-line,
+  .hero-cta,
+  .chapter-line {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+
+  .horizontal-track {
+    transition: none;
+  }
+}
+
+@media (max-width: 1023px) {
+  .angled-panel {
+    clip-path: polygon(0 0, 92% 0, 100% 100%, 0 100%);
+  }
+
+  .angled-panel-right {
+    clip-path: polygon(8% 0, 100% 0, 100% 100%, 0 100%);
+  }
+}
+
+@media (max-width: 639px) {
+  .gallery-grid {
+    grid-auto-rows: minmax(3.75rem, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .gallery-tile-tall {
+    grid-column: span 1;
+    grid-row: span 1;
+  }
 }
