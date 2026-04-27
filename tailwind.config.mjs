@@ -13,7 +13,7 @@ export default {
       },
       fontFamily: {
         sans: ["Inter", "Segoe UI", "system-ui", "sans-serif"],
-        athletic: ["Impact", "Haettenschweiler", "Arial Narrow Bold", "Arial Black", "sans-serif"],
+        athletic: ["Anton", "Impact", "Haettenschweiler", "Arial Narrow Bold", "Arial Black", "sans-serif"],
       },
     },
   },
