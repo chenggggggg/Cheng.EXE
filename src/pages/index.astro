@@ -63,8 +63,9 @@ const sectionNavItems = [
 <html lang="en">
   <head>
     <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
@@ -72,7 +73,7 @@ const sectionNavItems = [
     <meta name="generator" content={Astro.generator} />
     <meta
       name="description"
-      content="Private Muay Thai personal training, fighter development, and coaching with Cheng."
+      content="Muay Thai personal training, fighter development, and coaching with Cheng."
     />
     <title>Cheng.EXE | Muay Thai Personal Training</title>
   </head>
@@ -83,9 +84,12 @@ const sectionNavItems = [
           <div data-horizontal-track class="horizontal-track flex h-screen">
       <section data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/40 bg-black text-white">
         <div class="absolute inset-0 bg-black"></div>
-        <div data-hero-reveal class="relative mx-auto flex min-h-screen w-full max-w-7xl flex-col px-5 py-5 sm:px-8 sm:py-6 lg:px-10">
-          <header class="flex items-center justify-between">
-            <a href="/" class="font-athletic text-lg uppercase text-white sm:text-xl">Cheng.EXE</a>
+        <div data-hero-reveal class="relative mx-auto min-h-screen w-full max-w-7xl px-5 py-5 sm:px-8 sm:py-6 lg:px-10">
+          <header class="hero-nav absolute left-5 right-5 top-5 z-10 flex items-center justify-between sm:left-8 sm:right-8 sm:top-6 lg:left-10 lg:right-10">
+            <a href="/" class="brand-link" aria-label="Cheng.EXE home">
+              <img src="/logo/logo-white-transparent.png" alt="" class="brand-logo" />
+              <span>Cheng.EXE</span>
+            </a>
             <a
               href="#contact"
               data-go-panel="6"
@@ -95,7 +99,7 @@ const sectionNavItems = [
             </a>
           </header>
 
-          <div class="flex flex-1 items-center justify-center py-10 text-center sm:py-14 md:py-16 lg:py-20">
+          <div class="absolute inset-0 flex items-center justify-center px-5 text-center sm:px-8 lg:px-10">
             <h1
               class="mx-auto max-w-[18rem] font-athletic text-[1.5rem] font-normal italic leading-[1.18] text-white max-[380px]:text-[1.25rem] sm:max-w-[24rem] sm:text-[1.625rem] md:max-w-[30rem] md:text-[1.75rem] lg:max-w-[36rem] lg:text-[1.875rem] xl:max-w-[42rem] xl:text-[2rem] 2xl:max-w-[48rem] 2xl:text-[2.25rem]"
             >
@@ -106,7 +110,7 @@ const sectionNavItems = [
             </h1>
           </div>
 
-          <div class="flex justify-center pb-8 sm:pb-10">
+          <div class="absolute bottom-8 left-5 right-5 z-10 flex justify-center sm:bottom-10 sm:left-8 sm:right-8 lg:left-10 lg:right-10">
             <a
               href="#fundamentals"
               data-go-panel="1"
@@ -379,19 +383,6 @@ const sectionNavItems = [
       />
     </div>
     <script>
-      const heroLines = document.querySelector("[data-hero-reveal]");
-
-      if (heroLines) {
-        const revealHeroLines = () => {
-          heroLines.classList.add("hero-lines-visible");
-          window.removeEventListener("wheel", revealHeroLines);
-          window.removeEventListener("touchmove", revealHeroLines);
-        };
-
-        window.addEventListener("wheel", revealHeroLines, { once: true, passive: true });
-        window.addEventListener("touchmove", revealHeroLines, { once: true, passive: true });
-      }
-
       const horizontalTrack = document.querySelector("[data-horizontal-track]");
       const panels = Array.from(document.querySelectorAll("[data-panel]"));
       const panelLinks = document.querySelectorAll("[data-go-panel]");
@@ -449,10 +440,12 @@ const sectionNavItems = [
       };
 
       const setPanelReveal = (panel, isVisible) => {
+        const heroReveal = panel.querySelector("[data-hero-reveal]");
         const revealBlock = panel.querySelector("[data-chapter-reveal]");
         const revealImage = panel.querySelector("[data-chapter-image]");
         const sectionNav = panel.querySelector(".section-nav");
 
+        heroReveal?.classList.toggle("hero-visible", isVisible);
         revealBlock?.classList.toggle("chapter-visible", isVisible);
         revealImage?.classList.toggle("chapter-image-visible", isVisible);
         sectionNav?.classList.toggle("section-nav-visible", isVisible);
@@ -498,11 +491,17 @@ const sectionNavItems = [
           const contentTop = contentRect.top;
           const contentBottom = contentRect.bottom;
           const fadeDistance = viewportHeight * 0.5;
-          const fadeInStart = viewportHeight * 0.9;
+          const fadeInStart = viewportHeight * 0.4;
           const fadeOutComplete = viewportHeight * 0.1;
           const fadeInProgress = Math.max(0, Math.min(1, (fadeInStart - contentTop) / fadeDistance));
           const fadeOutProgress = Math.max(0, Math.min(1, (contentBottom - fadeOutComplete) / fadeDistance));
-          const progress = Math.min(fadeInProgress, fadeOutProgress);
+          const scrollElement = document.scrollingElement ?? document.documentElement;
+          const maxScroll = Math.max(0, scrollElement.scrollHeight - window.innerHeight);
+          const isPageBottom = window.scrollY >= maxScroll - 2;
+          const isLastPanel = panel === panels[panels.length - 1];
+          const progress = isLastPanel && isPageBottom
+            ? 1
+            : Math.min(fadeInProgress, fadeOutProgress);
           const easedProgress = progress * progress * (3 - 2 * progress);
           const isEntering = fadeInProgress <= fadeOutProgress;
           const translateY = (1 - easedProgress) * (isEntering ? 28 : -28);
