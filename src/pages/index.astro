@@ -236,12 +236,39 @@ const structuredData = {
         <div class="relative min-h-screen">
           <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
             <div class="w-full max-w-xl">
-            <p class="chapter-line font-athletic text-sm uppercase text-white/40">03</p>
-            <h2 class="chapter-line mt-4 font-athletic text-3xl font-normal italic text-white sm:text-4xl">Feel Stronger</h2>
-            <p class="chapter-line mt-6 max-w-xl text-base leading-8 text-white/62 sm:text-lg">
-              Enhance your athleticism not by simply 'pushing your limits,' but by building yourself up and becoming a better version of yourself every day. 
-              This approach allows you to enjoy training hard without it feeling like a chore, keeping you excited to check in at the gym.
-            </p>
+            <div class="chapter-line read-more-heading" data-read-more-heading data-expanded="false">
+              <p class="font-athletic text-sm uppercase text-white/40">03</p>
+              <h2 class="mt-4 font-athletic text-3xl font-normal italic text-white sm:text-4xl">Feel Stronger</h2>
+            </div>
+            <div class="chapter-line read-more-content mt-6 max-w-xl text-base leading-8 text-white/62 sm:text-lg" data-read-more-content data-expanded="false">
+              <div class="read-more-main" data-read-more-main>
+                <p>
+                  Enhance your athleticism not by simply 'pushing your limits,' but by building yourself up and becoming a better version of yourself every day.
+                  This approach allows you to enjoy training hard without it feeling like a chore, keeping you excited to check in at the gym.
+                </p>
+              </div>
+              <div class="read-more-expanded" data-read-more-expanded aria-hidden="true">
+                <div class="read-more-expanded-text">
+                  <p>
+                Many people have adopted a gym mentality that says, “Go hard or go home.” Although there may be some truth to it, that does not mean it is the right approach for everyone. For many people, this mindset is not sustainable and often leads to burnout just when they start making progress. As a result, they lose the reward of their hard work and have to start again from zero.
+                  </p>
+                  <p>
+From my experience training in Thailand, we believe in keeping a steady pace. Training should be tiring, but it should still leave you with enough energy to feel good and come back the next day. Repeating this cycle consistently develops both physical and mental strength. No burnout. No unnecessary injuries. No short-term results that disappear quickly.
+                  </p>
+                  <p>
+Some people still compare themselves to others who have already reached the top of the mountain. However, it is important to understand your own body: its limits, strengths, and weaknesses. From there, you follow a program that suits you. That is why we need the guidance of a real trainer.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="chapter-line read-more-toggle mt-5 font-athletic text-lg uppercase text-white underline decoration-white/45 underline-offset-4 transition hover:decoration-white hover:text-white/72 sm:text-xl"
+              data-read-more-toggle
+              aria-expanded="false"
+            >
+              Read More
+            </button>
             </div>
           </div>
         </div>
@@ -435,6 +462,12 @@ const structuredData = {
       const galleryClip = document.querySelector("#gallery .gallery-clip");
       const galleryGrid = document.querySelector("#gallery .gallery-grid");
       const galleryExpand = document.querySelector("[data-gallery-expand]");
+      const readMoreHeading = document.querySelector("[data-read-more-heading]");
+      const readMoreContent = document.querySelector("[data-read-more-content]");
+      const readMoreToggle = document.querySelector("[data-read-more-toggle]");
+      const readMoreMain = document.querySelector("[data-read-more-main]");
+      const readMoreExpanded = document.querySelector("[data-read-more-expanded]");
+      const readMoreSectionNav = readMoreToggle?.closest("[data-panel]")?.querySelector(".section-nav");
       const desktopPanels = window.matchMedia("(min-width: 768px)");
       let activePanelIndex = 0;
       let isPanelLocked = false;
@@ -586,6 +619,39 @@ const structuredData = {
         setMobileScrollReveal();
       });
 
+      readMoreContent?.addEventListener(
+        "wheel",
+        (event) => {
+          const hasExpandedOverflow =
+            readMoreExpanded && readMoreExpanded.scrollHeight > readMoreExpanded.clientHeight + 1;
+
+          if (readMoreContent.getAttribute("data-expanded") === "true" && hasExpandedOverflow) {
+            event.stopPropagation();
+          }
+        },
+        { passive: true }
+      );
+
+      readMoreToggle?.addEventListener("click", () => {
+        if (!readMoreContent || !readMoreToggle || !readMoreMain || !readMoreExpanded) return;
+
+        const isExpanded = readMoreContent.getAttribute("data-expanded") === "true";
+        const nextExpanded = !isExpanded;
+        const shouldReplaceContent = isDesktopPanels();
+
+        readMoreHeading?.setAttribute("data-expanded", String(nextExpanded && shouldReplaceContent));
+        readMoreContent.setAttribute("data-expanded", String(nextExpanded));
+        readMoreSectionNav?.classList.toggle("section-nav-suppressed", nextExpanded && shouldReplaceContent);
+        readMoreToggle.setAttribute("aria-expanded", String(nextExpanded));
+        readMoreToggle.textContent = nextExpanded ? "Read Less" : "Read More";
+        readMoreMain.setAttribute("aria-hidden", String(nextExpanded && shouldReplaceContent));
+        readMoreExpanded.setAttribute("aria-hidden", String(!nextExpanded));
+
+        if (!isDesktopPanels()) {
+          setMobileScrollReveal();
+        }
+      });
+
       const isDesktopPanels = () => desktopPanels.matches;
 
       if ("scrollRestoration" in window.history) {
@@ -612,10 +678,12 @@ const structuredData = {
       };
 
       const getRevealItems = (panel) => {
+        const heroReveal = panel.querySelector("[data-hero-reveal]");
         const revealBlock = panel.querySelector("[data-chapter-reveal]");
         const revealImage = panel.querySelector("[data-chapter-image]");
 
         return [
+          ...(heroReveal ? Array.from(heroReveal.querySelectorAll(".hero-nav, .hero-line, .hero-cta")) : []),
           revealImage,
           ...(revealBlock ? Array.from(revealBlock.querySelectorAll(".chapter-line")) : []),
         ].filter(Boolean);
@@ -668,6 +736,7 @@ const structuredData = {
 
           revealBlock?.classList.add("chapter-visible");
           revealImage?.classList.add("chapter-image-visible");
+          panel.querySelector("[data-hero-reveal]")?.classList.add("hero-visible");
 
           revealItems.forEach((item) => {
             item.style.opacity = easedProgress.toFixed(3);
@@ -940,6 +1009,12 @@ const structuredData = {
         isWheelGestureActive = false;
         window.clearTimeout(panelTransitionTimer);
         window.clearTimeout(wheelGestureTimer);
+
+        const isReadMoreExpanded = readMoreContent?.getAttribute("data-expanded") === "true";
+        readMoreHeading?.setAttribute("data-expanded", String(isReadMoreExpanded && isDesktopPanels()));
+        readMoreSectionNav?.classList.toggle("section-nav-suppressed", Boolean(isReadMoreExpanded && isDesktopPanels()));
+        readMoreMain?.setAttribute("aria-hidden", String(isReadMoreExpanded && isDesktopPanels()));
+        readMoreExpanded?.setAttribute("aria-hidden", String(!isReadMoreExpanded));
 
         if (isDesktopPanels()) {
           syncGalleryExpandButton();
