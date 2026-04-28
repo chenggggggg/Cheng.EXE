@@ -3,47 +3,47 @@ import "../styles/global.css";
 
 const galleryItems = [
   {
-    src: "/media/gallery/1777233657057.jpg",
+    src: "/media/gallery/1777233657057.webp",
     alt: "Muay Thai kick training",
     tile: "gallery-tile-tall",
   },
   {
-    src: "/media/gallery/1777233657018.jpg",
+    src: "/media/gallery/1777233657018.webp",
     alt: "Muay Thai boxing stance training",
     tile: "gallery-tile-tall",
   },
   {
-    src: "/media/gallery/action.jpg",
+    src: "/media/gallery/action.webp",
     alt: "Muay Thai fight action",
     tile: "gallery-tile-wide",
   },
   {
-    src: "/media/gallery/me.jpg",
+    src: "/media/gallery/me.webp",
     alt: "Muay Thai fighter portrait in the ring",
     tile: "gallery-tile-tall",
   },
   {
-    src: "/media/gallery/BHO_0119.jpg",
+    src: "/media/gallery/BHO_0119.webp",
     alt: "Muay Thai instructor group moment",
     tile: "gallery-tile-wide",
   },
   {
-    src: "/media/gallery/IMG_5717.JPG",
+    src: "/media/gallery/IMG_5717.webp",
     alt: "Muay Thai instructor certificate ceremony",
     tile: "gallery-tile-wide",
   },
   {
-    src: "/media/gallery/20260212-187.jpg",
+    src: "/media/gallery/20260212-187.webp",
     alt: "Wide Muay Thai group training class",
     tile: "gallery-tile-wide",
   },
   {
-    src: "/media/gallery/MuayThai-STA-foto.jpg",
+    src: "/media/gallery/MuayThai-STA-foto.webp",
     alt: "Muay Thai instructor portrait",
     tile: "gallery-tile-tall",
   },
   {
-    src: "/media/gallery/weigh-in.jpg",
+    src: "/media/gallery/weigh-in.webp",
     alt: "Muay Thai weigh-in faceoff",
     tile: "gallery-tile-tall",
   },
@@ -58,6 +58,31 @@ const sectionNavItems = [
   { index: 5, label: "Gallery", href: "#gallery" },
   { index: 6, label: "Contact", href: "#contact" },
 ];
+
+const siteUrl = "https://chengexe.fit";
+const pageTitle = "Cheng.EXE | Muay Thai Personal Training & Coaching";
+const pageDescription =
+  "Muay Thai personal training, fundamentals coaching, fight skills, and private training with Cheng.EXE.";
+const previewImage = `${siteUrl}/media/gallery/20260212-187.jpg`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "SportsActivityLocation",
+  name: "Cheng.EXE",
+  url: siteUrl,
+  image: previewImage,
+  description: pageDescription,
+  sport: "Muay Thai",
+  telephone: "+31646281182",
+  sameAs: ["https://www.instagram.com/calvin_nakmuay"],
+  makesOffer: {
+    "@type": "Offer",
+    itemOffered: {
+      "@type": "Service",
+      name: "Muay Thai personal training and coaching",
+      serviceType: "Muay Thai personal training",
+    },
+  },
+};
 ---
 
 <html lang="en">
@@ -71,11 +96,25 @@ const sectionNavItems = [
     <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet" />
     <meta name="viewport" content="width=device-width" />
     <meta name="generator" content={Astro.generator} />
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#000000" />
     <meta
       name="description"
-      content="Muay Thai personal training, fighter development, and coaching with Cheng."
+      content={pageDescription}
     />
-    <title>Cheng.EXE | Muay Thai Personal Training</title>
+    <link rel="canonical" href={siteUrl} />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:title" content={pageTitle} />
+    <meta property="og:description" content={pageDescription} />
+    <meta property="og:image" content={previewImage} />
+    <meta property="og:site_name" content="Cheng.EXE" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={pageDescription} />
+    <meta name="twitter:image" content={previewImage} />
+    <script type="application/ld+json" set:html={JSON.stringify(structuredData)} />
+    <title>{pageTitle}</title>
   </head>
   <body class="min-h-screen bg-black text-white antialiased">
     <main>
@@ -87,7 +126,7 @@ const sectionNavItems = [
         <div data-hero-reveal class="relative mx-auto min-h-screen w-full max-w-7xl px-5 py-5 sm:px-8 sm:py-6 lg:px-10">
           <header class="hero-nav absolute left-5 right-5 top-5 z-10 flex items-center justify-between sm:left-8 sm:right-8 sm:top-6 lg:left-10 lg:right-10">
             <a href="/" class="brand-link" aria-label="Cheng.EXE home">
-              <img src="/logo/logo-white-transparent.png" alt="" class="brand-logo" />
+              <img src="/logo/logo-white-transparent.webp" alt="" class="brand-logo" />
               <span>Cheng.EXE</span>
             </a>
             <a
@@ -123,13 +162,13 @@ const sectionNavItems = [
       </section>
 
       <section id="fundamentals" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/40 bg-black">
-        <figure data-chapter-image class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
-          <img
-            src="/media/fundamentals-training.jpg"
-            alt="Muay Thai fundamentals group training"
-            class="h-full w-full object-cover object-center opacity-85"
-          />
-        </figure>
+        <figure
+          data-chapter-image
+          class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]"
+          style="--chapter-image: url('/media/fundamentals-training.webp')"
+          role="img"
+          aria-label="Muay Thai fundamentals group training"
+        ></figure>
         <div class="absolute inset-0 bg-black/15"></div>
         <div class="relative min-h-screen">
           <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
@@ -154,13 +193,13 @@ const sectionNavItems = [
       </section>
 
       <section id="sharpen-skills" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/40 bg-black">
-        <figure data-chapter-image class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
-          <img
-            src="/media/fight-action.jpg"
-            alt="Muay Thai fight action"
-            class="h-full w-full object-cover object-center opacity-85"
-          />
-        </figure>
+        <figure
+          data-chapter-image
+          class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]"
+          style="--chapter-image: url('/media/fight-action.webp')"
+          role="img"
+          aria-label="Muay Thai fight action"
+        ></figure>
         <div class="absolute inset-0 bg-black/15"></div>
         <div class="relative min-h-screen">
           <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
@@ -186,13 +225,13 @@ const sectionNavItems = [
       </section>
 
       <section id="feel-stronger" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/40 bg-black">
-        <figure data-chapter-image class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
-          <img
-            src="/media/kick-training.jpg"
-            alt="Muay Thai kick training"
-            class="h-full w-full object-cover object-center opacity-85"
-          />
-        </figure>
+        <figure
+          data-chapter-image
+          class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]"
+          style="--chapter-image: url('/media/kick-training.webp')"
+          role="img"
+          aria-label="Muay Thai kick training"
+        ></figure>
         <div class="absolute inset-0 bg-black/15"></div>
         <div class="relative min-h-screen">
           <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
@@ -217,13 +256,13 @@ const sectionNavItems = [
       </section>
 
       <section id="experience" data-panel class="relative h-screen w-screen flex-none overflow-hidden border-r border-white/40 bg-black">
-        <figure data-chapter-image class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]">
-          <img
-            src="/media/portrait-ring.jpg"
-            alt="Cheng in the ring"
-            class="h-full w-full object-cover object-center opacity-85"
-          />
-        </figure>
+        <figure
+          data-chapter-image
+          class="chapter-image absolute inset-y-0 left-0 w-[54vw] max-w-[54rem]"
+          style="--chapter-image: url('/media/portrait-ring.webp')"
+          role="img"
+          aria-label="Cheng in the ring"
+        ></figure>
         <div class="absolute inset-0 bg-black/15"></div>
         <div class="relative min-h-screen">
           <div data-chapter-reveal class="angled-panel angled-panel-right no-panel-edge absolute inset-y-0 right-0 flex w-[74vw] items-center justify-center bg-black py-14 pl-[14vw] pr-5 sm:pr-8 lg:pr-[max(2.5rem,calc((100vw-80rem)/2+2.5rem))]">
@@ -275,14 +314,9 @@ const sectionNavItems = [
                   data-gallery-src={item.src}
                   data-gallery-alt={item.alt}
                   class={`gallery-thumb ${item.tile}`}
+                  style={`--gallery-image: url('${item.src}')`}
                   aria-label={`Preview ${item.alt}`}
-                >
-                  <img
-                    src={item.src}
-                    alt={item.alt}
-                    class="h-full w-full object-cover object-center"
-                  />
-                </button>
+                ></button>
               ))}
             </div>
           </div>
@@ -375,23 +409,16 @@ const sectionNavItems = [
     </main>
     <div
       data-gallery-preview
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/96 px-5 py-6 sm:px-8"
+      class="gallery-preview fixed inset-0 z-50 hidden items-center justify-center"
       role="dialog"
       aria-modal="true"
       aria-label="Gallery preview"
     >
-      <button
-        type="button"
-        data-gallery-close
-        class="absolute right-5 top-5 inline-flex h-11 w-11 items-center justify-center border border-white/35 font-athletic text-2xl leading-none text-white transition hover:border-white hover:bg-white hover:text-black"
-        aria-label="Close gallery preview"
-      >
-        &times;
-      </button>
       <img
         data-gallery-preview-image
         src=""
         alt=""
+        draggable="false"
         class="max-h-[86vh] max-w-[92vw] object-contain"
       />
     </div>
@@ -418,14 +445,27 @@ const sectionNavItems = [
       let touchStartX = 0;
       let touchStartY = 0;
       let isGalleryPreviewOpen = false;
+      let previewDrag = null;
+
+      const resetGalleryPreviewImage = () => {
+        if (!galleryPreviewImage) return;
+
+        galleryPreviewImage.classList.remove("gallery-preview-dragging");
+        galleryPreviewImage.style.removeProperty("--preview-x");
+        galleryPreviewImage.style.removeProperty("--preview-y");
+        galleryPreviewImage.style.removeProperty("--preview-rotate");
+      };
 
       const closeGalleryPreview = () => {
         if (!galleryPreview || !galleryPreviewImage) return;
 
+        galleryPreview.classList.remove("gallery-preview-visible");
         galleryPreview.classList.add("hidden");
         galleryPreview.classList.remove("flex");
         galleryPreviewImage.removeAttribute("src");
         galleryPreviewImage.alt = "";
+        resetGalleryPreviewImage();
+        previewDrag = null;
         isGalleryPreviewOpen = false;
       };
 
@@ -435,8 +475,12 @@ const sectionNavItems = [
 
           galleryPreviewImage.src = item.getAttribute("data-gallery-src") ?? "";
           galleryPreviewImage.alt = item.getAttribute("data-gallery-alt") ?? "";
+          resetGalleryPreviewImage();
           galleryPreview.classList.remove("hidden");
           galleryPreview.classList.add("flex");
+          window.requestAnimationFrame(() => {
+            galleryPreview.classList.add("gallery-preview-visible");
+          });
           isGalleryPreviewOpen = true;
         });
       });
@@ -446,6 +490,75 @@ const sectionNavItems = [
       galleryPreview?.addEventListener("click", (event) => {
         if (event.target === galleryPreview) closeGalleryPreview();
       });
+
+      galleryPreviewImage?.addEventListener("pointerdown", (event) => {
+        if (!isGalleryPreviewOpen || event.button !== 0) return;
+
+        galleryPreviewImage.setPointerCapture(event.pointerId);
+        galleryPreviewImage.classList.add("gallery-preview-dragging");
+        previewDrag = {
+          pointerId: event.pointerId,
+          startX: event.clientX,
+          startY: event.clientY,
+          lastX: event.clientX,
+          lastY: event.clientY,
+          lastTime: performance.now(),
+          velocityX: 0,
+          velocityY: 0,
+        };
+      });
+
+      galleryPreviewImage?.addEventListener("pointermove", (event) => {
+        if (!previewDrag || previewDrag.pointerId !== event.pointerId) return;
+
+        event.preventDefault();
+
+        const now = performance.now();
+        const deltaTime = Math.max(16, now - previewDrag.lastTime);
+        const deltaX = event.clientX - previewDrag.startX;
+        const deltaY = event.clientY - previewDrag.startY;
+
+        previewDrag.velocityX = (event.clientX - previewDrag.lastX) / deltaTime;
+        previewDrag.velocityY = (event.clientY - previewDrag.lastY) / deltaTime;
+        previewDrag.lastX = event.clientX;
+        previewDrag.lastY = event.clientY;
+        previewDrag.lastTime = now;
+
+        galleryPreviewImage.style.setProperty("--preview-x", `${deltaX.toFixed(1)}px`);
+        galleryPreviewImage.style.setProperty("--preview-y", `${deltaY.toFixed(1)}px`);
+        galleryPreviewImage.style.setProperty("--preview-rotate", `${(deltaX / 28).toFixed(2)}deg`);
+      });
+
+      const finishPreviewDrag = (event) => {
+        if (!previewDrag || previewDrag.pointerId !== event.pointerId) return;
+
+        const deltaX = event.clientX - previewDrag.startX;
+        const deltaY = event.clientY - previewDrag.startY;
+        const throwDistance = Math.hypot(deltaX, deltaY);
+        const throwSpeed = Math.hypot(previewDrag.velocityX, previewDrag.velocityY);
+        const shouldDismiss = throwDistance > 115 || throwSpeed > 0.75;
+
+        galleryPreviewImage?.classList.remove("gallery-preview-dragging");
+
+        if (shouldDismiss && galleryPreviewImage) {
+          const escapeX = deltaX + Math.sign(deltaX || previewDrag.velocityX || 1) * window.innerWidth;
+          const escapeY = deltaY + Math.sign(deltaY || previewDrag.velocityY || 1) * window.innerHeight;
+
+          galleryPreviewImage.style.setProperty("--preview-x", `${escapeX.toFixed(1)}px`);
+          galleryPreviewImage.style.setProperty("--preview-y", `${escapeY.toFixed(1)}px`);
+          galleryPreviewImage.style.setProperty("--preview-rotate", `${(escapeX / 26).toFixed(2)}deg`);
+          galleryPreview?.classList.remove("gallery-preview-visible");
+          window.setTimeout(closeGalleryPreview, 180);
+          previewDrag = null;
+          return;
+        }
+
+        resetGalleryPreviewImage();
+        previewDrag = null;
+      };
+
+      galleryPreviewImage?.addEventListener("pointerup", finishPreviewDrag);
+      galleryPreviewImage?.addEventListener("pointercancel", finishPreviewDrag);
 
       const syncGalleryExpandButton = () => {
         if (!gallerySection || !galleryClip || !galleryExpand) return;
