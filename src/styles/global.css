@@ -292,6 +292,10 @@ body {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.gallery-clip {
+  min-height: 0;
+}
+
 .gallery-thumb {
   background: #111;
   border: 0;
@@ -308,6 +312,7 @@ body {
 
 .gallery-thumb img {
   opacity: 0.86;
+  transform: scale(1.08);
   transition:
     opacity 180ms ease,
     transform 240ms ease;
@@ -321,7 +326,7 @@ body {
 .gallery-thumb:hover img,
 .gallery-thumb:focus-visible img {
   opacity: 1;
-  transform: scale(1.025);
+  transform: scale(1.13);
 }
 
 .gallery-tile-wide {
@@ -337,6 +342,44 @@ body {
 .gallery-tile-tall {
   grid-column: span 1;
   grid-row: span 2;
+}
+
+.gallery-more {
+  align-items: center;
+  align-self: center;
+  background: white;
+  border: 1px solid white;
+  box-sizing: border-box;
+  color: black;
+  cursor: pointer;
+  display: inline-flex;
+  font-family: Anton, Impact, Haettenschweiler, "Arial Narrow Bold", "Arial Black", sans-serif;
+  font-size: 0.875rem;
+  height: 3rem;
+  justify-content: center;
+  line-height: 1;
+  margin-top: 1rem;
+  max-height: 3rem;
+  min-height: 3rem;
+  min-width: 8.5rem;
+  padding: 0 1.75rem;
+  text-transform: uppercase;
+  transition:
+    background 180ms ease,
+    color 180ms ease;
+}
+
+.gallery-more:hover,
+.gallery-more:focus-visible {
+  background: black;
+  color: white;
+  outline: none;
+}
+
+@media (min-width: 768px) {
+  .gallery-more {
+    display: none;
+  }
 }
 
 @keyframes hero-line-fade {
@@ -531,14 +574,46 @@ body {
   }
 
   #gallery > [data-chapter-reveal] {
-    display: block;
-    min-height: auto;
-    padding: 0 1.25rem;
+    display: flex;
+    flex-direction: column;
+    height: 100svh;
+    min-height: 100svh;
+    padding: 2rem 1.25rem 3rem;
   }
 
   #gallery .gallery-grid {
     grid-auto-rows: minmax(9rem, auto);
+  }
+
+  #gallery .gallery-clip {
     margin-top: 1.25rem;
+    max-height: calc(100svh - 15.5rem);
+    overflow: hidden;
+  }
+
+  #gallery:not(.gallery-expanded) {
+    height: 100svh;
+    max-height: 100svh;
+    min-height: 100svh;
+    overflow: hidden;
+  }
+
+  #gallery.gallery-expanded {
+    height: auto;
+    max-height: none;
+    min-height: 100svh;
+    overflow-x: clip;
+    overflow-y: visible;
+  }
+
+  #gallery.gallery-expanded > [data-chapter-reveal] {
+    height: auto;
+    min-height: 100svh;
+  }
+
+  #gallery.gallery-expanded .gallery-clip {
+    max-height: none;
+    overflow: visible;
   }
 
   #gallery .gallery-thumb {

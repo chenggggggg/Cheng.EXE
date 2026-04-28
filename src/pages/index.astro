@@ -266,24 +266,34 @@ const sectionNavItems = [
             <span>/</span>
             <span>Coach</span>
           </div>
-          <div class="chapter-line gallery-grid min-h-0">
-            {galleryItems.map((item) => (
-              <button
-                type="button"
-                data-gallery-item
-                data-gallery-src={item.src}
-                data-gallery-alt={item.alt}
-                class={`gallery-thumb ${item.tile}`}
-                aria-label={`Preview ${item.alt}`}
-              >
-                <img
-                  src={item.src}
-                  alt={item.alt}
-                  class="h-full w-full object-cover object-center"
-                />
-              </button>
-            ))}
+          <div class="chapter-line gallery-clip">
+            <div class="gallery-grid">
+              {galleryItems.map((item) => (
+                <button
+                  type="button"
+                  data-gallery-item
+                  data-gallery-src={item.src}
+                  data-gallery-alt={item.alt}
+                  class={`gallery-thumb ${item.tile}`}
+                  aria-label={`Preview ${item.alt}`}
+                >
+                  <img
+                    src={item.src}
+                    alt={item.alt}
+                    class="h-full w-full object-cover object-center"
+                  />
+                </button>
+              ))}
+            </div>
           </div>
+          <button
+            type="button"
+            data-gallery-expand
+            class="gallery-more chapter-line md:hidden"
+            aria-expanded="false"
+          >
+            View More
+          </button>
         </div>
         <nav class="section-nav hidden md:flex" aria-label="Section navigation">
           {sectionNavItems.map((item) => (
@@ -346,6 +356,9 @@ const sectionNavItems = [
               +31 646281182
             </a>
           </div>
+          <p class="chapter-line contact-credit mt-12 font-athletic text-xs uppercase text-white/32">
+            &copy; 2026 Cheng.EXE
+          </p>
         </div>
         <nav class="section-nav hidden md:flex" aria-label="Section navigation">
           {sectionNavItems.map((item) => (
@@ -362,7 +375,7 @@ const sectionNavItems = [
     </main>
     <div
       data-gallery-preview
-      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/92 px-5 py-6 sm:px-8"
+      class="fixed inset-0 z-50 hidden items-center justify-center bg-black/96 px-5 py-6 sm:px-8"
       role="dialog"
       aria-modal="true"
       aria-label="Gallery preview"
@@ -391,6 +404,10 @@ const sectionNavItems = [
       const galleryPreview = document.querySelector("[data-gallery-preview]");
       const galleryPreviewImage = document.querySelector("[data-gallery-preview-image]");
       const galleryClose = document.querySelector("[data-gallery-close]");
+      const gallerySection = document.querySelector("#gallery");
+      const galleryClip = document.querySelector("#gallery .gallery-clip");
+      const galleryGrid = document.querySelector("#gallery .gallery-grid");
+      const galleryExpand = document.querySelector("[data-gallery-expand]");
       const desktopPanels = window.matchMedia("(min-width: 768px)");
       let activePanelIndex = 0;
       let isPanelLocked = false;
@@ -430,7 +447,37 @@ const sectionNavItems = [
         if (event.target === galleryPreview) closeGalleryPreview();
       });
 
+      const syncGalleryExpandButton = () => {
+        if (!gallerySection || !galleryClip || !galleryExpand) return;
+
+        if (isDesktopPanels()) {
+          gallerySection.classList.remove("gallery-expanded");
+          galleryExpand.setAttribute("aria-expanded", "false");
+          galleryExpand.textContent = "View More";
+          galleryExpand.hidden = true;
+          return;
+        }
+
+        galleryExpand.hidden = false;
+        window.requestAnimationFrame(() => {
+          galleryExpand.hidden = galleryClip.scrollHeight <= galleryClip.clientHeight + 2;
+        });
+      };
+
+      galleryExpand?.addEventListener("click", () => {
+        if (!gallerySection || !galleryExpand) return;
+
+        const isExpanded = gallerySection.classList.toggle("gallery-expanded");
+        galleryExpand.setAttribute("aria-expanded", String(isExpanded));
+        galleryExpand.textContent = isExpanded ? "View Less" : "View More";
+        setMobileScrollReveal();
+      });
+
       const isDesktopPanels = () => desktopPanels.matches;
+
+      if ("scrollRestoration" in window.history) {
+        window.history.scrollRestoration = "manual";
+      }
 
       const resetMobileHorizontalState = () => {
         if (isDesktopPanels()) return;
@@ -567,6 +614,16 @@ const sectionNavItems = [
         revealActivePanel(activePanelIndex);
       };
 
+      const getPanelIndexFromHash = () => {
+        const currentHash = window.location.hash.replace("#", "");
+
+        if (!currentHash) return 0;
+
+        const hashIndex = panels.findIndex((panel) => panel.id === currentHash);
+
+        return hashIndex >= 0 ? hashIndex : 0;
+      };
+
       const updateSectionHash = (index) => {
         const panel = panels[index];
         const hash = panel?.id ? `#${panel.id}` : window.location.pathname;
@@ -597,6 +654,26 @@ const sectionNavItems = [
         window.scrollTo({
           top: targetTop,
           behavior: "smooth",
+        });
+      };
+
+      const syncToCurrentHash = () => {
+        const targetIndex = getPanelIndexFromHash();
+
+        if (isDesktopPanels()) {
+          window.scrollTo(0, 0);
+          goToPanel(targetIndex);
+          return;
+        }
+
+        activePanelIndex = targetIndex;
+        resetMobileHorizontalState();
+        window.requestAnimationFrame(() => {
+          if (targetIndex > 0) {
+            scrollToMobilePanelContent(targetIndex);
+          }
+
+          setMobileScrollReveal();
         });
       };
 
@@ -732,6 +809,8 @@ const sectionNavItems = [
       );
 
       window.addEventListener("resize", () => {
+        syncGalleryExpandButton();
+
         if (isDesktopPanels()) {
           clearMobileScrollRevealStyles();
           goToPanel(activePanelIndex);
@@ -750,21 +829,28 @@ const sectionNavItems = [
         window.clearTimeout(wheelGestureTimer);
 
         if (isDesktopPanels()) {
+          syncGalleryExpandButton();
           clearMobileScrollRevealStyles();
           goToPanel(activePanelIndex);
           return;
         }
 
         resetMobileHorizontalState();
+        syncGalleryExpandButton();
         setMobileScrollReveal();
       });
 
+      window.addEventListener("hashchange", syncToCurrentHash);
+
       if (isDesktopPanels()) {
+        syncGalleryExpandButton();
         clearMobileScrollRevealStyles();
-        goToPanel(0);
+        window.scrollTo(0, 0);
+        goToPanel(getPanelIndexFromHash());
       } else {
         resetMobileHorizontalState();
-        setMobileScrollReveal();
+        syncGalleryExpandButton();
+        syncToCurrentHash();
       }
 
       window.addEventListener(
